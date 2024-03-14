@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React App</title>
+    <link rel="stylesheet" href="React_3_css.css">
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        @keyframes example 
+        {
+            0%   {color: red; font-size: 20px;}
+            25%  {color: yellow; font-size: 25px;}
+            50%  {color: blue; font-size: 30px;}
+            100% {color: green; font-size: 35px;}
+        }
+
+        #animatedSentence 
+        {
+            animation-name: example;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#section1">Go to Section 1</a>
+    <a href="#section2">Go to Section 2</a>
+
+    <button class="open-button" onclick="openForm()">Open Form</button>
+
+    <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+            <h1>Login</h1>
+
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <button type="submit" class="btn">Login</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
+    <script>
+        function openForm() 
+        {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() 
+        {
+            document.getElementById("myForm").style.display = "none";
+        }
+    </script>
+
+    <form>
+        <lable for="phoneNumber">Phone Number:</lable>
+        <input type="text" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Phone number must be in the format (three digits here)-(three digits here)-(four digits here)">
+    </form>
+    <!-- Your React components and app code goes here -->
+    <div id="JSX" class="fade-out"></div>
+    <script type="text/babel">
+        class Greeting extends React.Component 
+        {
+            componentDidMount() 
+            {
+                const element = document.getElementById('JSX');
+                element.classList.add('fade-out');
+                setTimeout(() => element.classList.add('hide'), 2000); // Add the 'hide' class after 2 seconds
+            }
+
+            render() 
+            {
+                return <h1 style = {{fontSize: '8vw'}}>Hello, World!</h1>;
+            }
+        }
+
+        ReactDOM.render(<Greeting />, document.getElementById('JSX'));
+    </script>
+
+    <h1 id="animatedSentence">Welcome to the page</h1>
+
+    <p>This is an example paragraph...</p>
+
+    <section>
+        <h2 id="section1">Section 1</h2>
+        <p>This is Section 1...</p>
+    </section>
+
+    <section>
+        <h2 id="section2">Section 2</h2>
+        <p>This is Section 2...</p>
+    </section>
+
+    <script>
+        window.onload = function() {
+            var slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";  
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {slideIndex = 1}    
+                slides[slideIndex-1].style.display = "block";  
+                setTimeout(showSlides, 5000); // Change image every 5 seconds
+            }
+        }
+    </script>
+
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="React_3_IMG/5d234bbe9f4eb48069dd157e4cefdc5f.jpg" style="width:100%" alt="">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="React_3_IMG/R.jpg" style="width:100%" alt="">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="React_3_IMG/white-dahlia-zachary-birch.jpg" style="width:100%" alt="">
+        </div>
+    </div>
+
+    <button class="open-button" onclick="openForm()">Contact Us</button>
+
+</body>
+</html>
